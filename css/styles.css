@@ -280,7 +280,7 @@ body {
   }
   
   /* Extra Small Devices (<480px) */
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     h1, h2 {
       font-size: 1.2rem;
     }
