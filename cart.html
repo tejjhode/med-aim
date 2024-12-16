@@ -1,0 +1,50 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cart - Med AIM</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <i class="fas fa-clinic-medical"></i> Med AIM
+          </a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="upload.html"><i class="fas fa-file-upload"></i> Upload</a></li>
+          <li><a href="manual.html"><i class="fas fa-keyboard"></i> Manual</a></li>
+          <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+      </nav>
+  <!-- Cart Section -->
+  <div class="cart-container">
+    <h1><i class="fas fa-shopping-cart"></i> Your Cart</h1>
+    <div class="cart-items">
+      <div class="cart-item">
+        <!-- <img src="assets/medicine1.jpg" alt="Medicine 1" /> -->
+        <div class="item-details">
+          <h3><i class="fas fa-pills"></i> Medicine Name</h3>
+          <p><i class="fas fa-cogs"></i> Quantity: 1</p>
+          <p><i class="fas fa-dollar-sign"></i> Price: $10</p>
+        </div>
+        <button class="remove-btn"><i class="fas fa-trash-alt"></i> Remove</button>
+      </div>
+      <!-- Add more cart items here -->
+    </div>
+    <div class="cart-summary">
+      <h3><i class="fas fa-money-check-alt"></i> Total: $10</h3>
+      <button class="checkout-btn"><i class="fas fa-credit-card"></i> Checkout</button>
+    </div>
+  </div>
+<script src="js/script.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

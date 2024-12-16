@@ -1,0 +1,506 @@
+/* css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+  }
+  
+  .welcome {
+    margin-top: 20%;
+  }
+  
+  h1 span {
+    color: #007bff;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  /* css/styles.css */
+form {
+    margin: 20px auto;
+    width: 50%;
+    text-align: left;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  #medicineList {
+    margin-top: 20px;
+  }
+  
+  #medicineList p {
+    margin: 10px 0;
+  }
+  
+  #medicineList button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  /* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #68cf9d;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .navbar .logo img {
+    height: 40px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #ffdd57;
+  }
+  /* General Icon Styling */
+i {
+    margin-right: 8px;
+    color: #007bff;
+  }
+  
+  /* Icon Size in Buttons */
+  button i, .nav-links i {
+    font-size: 1rem;
+  }
+  
+  /* Welcome Page Icon Styling */
+  .welcome h1 span i {
+    color: #ffdd57;
+    font-size: 1.5rem;
+  }
+  /* Base Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #68cf9d;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .navbar .logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  /* Hamburger Menu for Mobile */
+  .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+ 
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #68cf9d;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .nav-links li {
+      margin: 10px 0;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+  /* General Responsive Adjustments */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Containers */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Ensure Images Are Responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Button Adjustments for Mobile */
+  button {
+    width: 100%; /* Full width on mobile */
+    margin: 10px 0;
+    padding: 10px 20px;
+  }
+  
+  /* Input Fields for Mobile */
+  input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Manual Entry and Cart Adjustments */
+  form {
+    padding: 10px;
+  }/* General Responsive Adjustments */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Containers */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Ensure Images Are Responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Button Adjustments for Mobile */
+  button {
+    width: 100%; /* Full width on mobile */
+    margin: 10px 0;
+    padding: 10px 20px;
+  }
+  
+  /* Input Fields for Mobile */
+  input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Manual Entry and Cart Adjustments */
+  form {
+    padding: 10px;
+  }
+}
+  /* Small Devices (Mobile, <768px) */
+@media (max-width: 768px) {
+    h1, h2, h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .upload-section, .manual-entry-section, .cart-section {
+      padding: 20px;
+    }
+  
+    .manual-entry-section div {
+      margin-bottom: 15px;
+    }
+  
+    .cart-items {
+      flex-direction: column;
+    }
+  }
+  
+  /* Extra Small Devices (<480px) */
+  @media (max-width: 480px) {
+    h1, h2 {
+      font-size: 1.2rem;
+    }
+  
+    .welcome-animation {
+      width: 80%; /* Scale animation size */
+    }
+  
+    .magic-button {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+  
+  /* Responsive Buttons */
+button {
+    width: 100%; /* Full width for mobile */
+    margin: 5px 0;
+    padding: 12px 15px;
+    font-size: 1rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Forms */
+  form {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+  }
+}
+  /* Adjust Animation Speeds */
+@media (max-width: 768px) {
+    .welcome-animation {
+      animation: bounce 3s infinite; /* Slower bounce effect */
+    }
+  
+    .fade-in {
+      animation-duration: 1.5s;
+    }
+    .logo img {
+        width: 10px; /* Adjust as needed */
+        height: 10px;
+        margin-right: 10px; /* Spacing between the logo and text */
+        vertical-align: middle;
+
+      }
+      
+      .logo a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+  }
+/* Styling for icons */
+i {
+    margin-right: 10px; /* Adds space between icon and text */
+  }
+  
+  .cart-container h1,
+  .upload-container h1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .remove-btn, .checkout-btn, .upload-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .remove-btn {
+    background-color: #ff4d4d;
+  }
+  
+  .cart-summary,
+  .upload-container {
+    margin-top: 20px;
+  }
+  
+  .upload-btn {
+    background-color: #007bff;
+  }
+  
+  @media (max-width: 768px) {
+    .cart-item {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .cart-item img {
+      margin-bottom: 10px;
+    }
+  }
+  /* Upload Page Styles */
+.upload-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload-container h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .upload-container i {
+    margin-right: 10px;
+  }
+  
+  .upload-form {
+    text-align: center;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  label {
+    cursor: pointer;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  label:hover {
+    background-color: #0056b3;
+  }
+  
+  .upload-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .upload-btn i {
+    margin-right: 10px;
+  }
+  
+  .upload-btn:hover {
+    background-color: #218838;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .upload-container {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .upload-container h1 {
+      font-size: 1.8rem;
+    }
+  
+    .upload-btn, label {
+      font-size: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+  
+    label {
+      margin-bottom: 10px;
+    }
+  }
+  

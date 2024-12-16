@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Prescription Upload - Med AIM</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-clinic-medical"></i> Med AIM
+            </a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="upload.html"><i class="fas fa-file-upload"></i> Upload</a></li>
+            <li><a href="manual.html"><i class="fas fa-keyboard"></i> Manual</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+    </nav>
+
+    <!-- Upload Section -->
+    <div class="upload-container">
+        <h1><i class="fas fa-upload"></i> Upload Prescription</h1>
+        <form id="uploadForm">
+            <label for="fileInput">
+                <i class="fas fa-file-upload"></i> Choose Prescription File
+            </label>
+            <input type="file" id="fileInput" name="file" accept="image/*" required />
+            <button type="submit" class="upload-btn">
+                <i class="fas fa-paper-plane"></i> Upload
+            </button>
+        </form>
+    </div>
+    <div id="results"></div>
+    <p>Prefer to enter manually? <a href="manual.html">Switch to Manual Mode</a></p>
+
+    <script src="js/ocr.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
