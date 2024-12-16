@@ -1,12 +1,10 @@
-<!-- manual.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manual Entry - Med AIM</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -25,32 +23,117 @@
           <li><a href="manual.html"><i class="fas fa-keyboard"></i> Manual</a></li>
           <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
-      </nav>
- <!-- Manual Entry Form -->
-<h2><i class="fas fa-keyboard"></i> Manual Medicine Entry</h2>
-<form id="manualForm">
-  <div>
-    <label for="medicineName">
-      <i class="fas fa-capsules"></i> Medicine Name:
-    </label>
-    <input type="text" id="medicineName" placeholder="Enter medicine name" required>
-  </div>
-  <div>
-    <label for="quantity">
-      <i class="fas fa-sort-numeric-up"></i> Quantity:
-    </label>
-    <input type="number" id="quantity" placeholder="Enter quantity" required>
-  </div>
-  <button type="button" onclick="addMedicine()">
-    <i class="fas fa-plus-circle"></i> Add to List
-  </button>
-</form>
+    </nav>
 
-  <h3>Medicine List</h3>
-  <div id="medicineList"></div>
-  <button onclick="proceedToCart()">Proceed to Cart</button>
-  <p>Have a prescription? <a href="upload.html">Switch to Upload Mode</a></p>
-  <script src="js/manual.js"></script>
-  <script src="js/script.js"></script>
+    <!-- Manual Entry Section -->
+    <div class="manual-container">
+        <h1><i class="fas fa-keyboard"></i> Manual Medicine Entry</h1>
+        <form id="medicineForm">
+            <label for="medicineName">Search for Medicine:</label>
+            <input type="text" id="medicineName" name="medicineName" placeholder="Type medicine name..." autocomplete="off">
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" min="1">
+
+            <button type="submit" class="add-btn">
+                <i class="fas fa-plus"></i> Add to Cart
+            </button>
+        </form>
+
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions-box" style="display: none;"></div>
+    </div>
+
+    <script>
+        // API Endpoint
+        const API_URL = 'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search'; // Adjust as needed
+
+        const medicineInput = document.getElementById('medicineName');
+        const quantityInput = document.getElementById('quantity');
+        const suggestionsBox = document.getElementById('suggestions');
+        const medicineForm = document.getElementById('medicineForm');
+
+        // Fetch Medicines from API
+        async function fetchMedicines(query) {
+            try {
+                const response = await fetch(`${API_URL}?terms=${query}`);
+                const data = await response.json();
+                return data[1]; // Adjust based on the API's response structure
+            } catch (error) {
+                console.error('Error fetching medicines:', error);
+                return [];
+            }
+        }
+
+        // Display Suggestions
+        function displaySuggestions(medicines) {
+            suggestionsBox.innerHTML = '';
+            if (medicines && medicines.length > 0) {
+                suggestionsBox.style.display = 'block';
+                medicines.forEach((medicine) => {
+                    const div = document.createElement('div');
+                    div.className = 'suggestion-item';
+                    div.textContent = medicine;
+                    div.addEventListener('click', () => {
+                        medicineInput.value = medicine;
+                        suggestionsBox.style.display = 'none';
+                    });
+                    suggestionsBox.appendChild(div);
+                });
+            } else {
+                suggestionsBox.style.display = 'none';
+            }
+        }
+
+        // Add Medicine to Cart
+        function addToCart(medicine, quantity) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find((item) => item.medicine === medicine);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ medicine, quantity });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Event Listener for Medicine Input
+        medicineInput.addEventListener('input', async () => {
+            const query = medicineInput.value.trim();
+            if (query.length > 2) {
+                const medicines = await fetchMedicines(query);
+                displaySuggestions(medicines);
+            } else {
+                suggestionsBox.style.display = 'none';
+            }
+        });
+
+        // Prevent Default Form Submission and Handle Cart Addition
+        medicineForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const selectedMedicine = medicineInput.value.trim();
+            const quantity = parseInt(quantityInput.value, 10);
+
+            if (!selectedMedicine) {
+                alert('Please select or enter a medicine before adding to the cart.');
+                return;
+            }
+
+            if (!quantity || quantity <= 0) {
+                alert('Please enter a valid quantity greater than zero.');
+                return;
+            }
+
+            addToCart(selectedMedicine, quantity);
+            alert(`Medicine "${selectedMedicine}" with quantity ${quantity} added to the cart!`);
+
+            // Reset Fields
+            medicineInput.value = '';
+            quantityInput.value = '';
+            suggestionsBox.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
