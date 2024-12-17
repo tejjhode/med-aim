@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Payment - Med ATM</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Payment - Med AIM</title>
+  <link rel="stylesheet" href="css/styles2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <a href="index.html">
-                <i class="fas fa-clinic-medical"></i> Med AIM
-            </a>
+          <a href="index.html">
+            <i class="fas fa-clinic-medical"></i> Med AIM
+          </a>
         </div>
         <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+          <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="upload.html"><i class="fas fa-file-upload"></i> Upload</a></li>
-            <li><a href="manual.html"><i class="fas fa-keyboard"></i> Manual</a></li>
-            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-            <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="upload.html"><i class="fas fa-file-upload"></i> Upload</a></li>
+          <li><a href="manual.html"><i class="fas fa-keyboard"></i> Manual</a></li>
+          <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 
@@ -31,70 +29,67 @@
     <div class="payment-container">
         <h1><i class="fas fa-credit-card"></i> Payment Options</h1>
         
-        <!-- Payment Options -->
         <div class="payment-options">
-            <button class="payment-btn" id="creditCardBtn">
-                <i class="fas fa-credit-card"></i> Credit Card
-            </button>
-            <button class="payment-btn" id="debitCardBtn">
-                <i class="fas fa-credit-card"></i> Debit Card
-            </button>
-            <button class="payment-btn" id="upiBtn">
-                <i class="fas fa-qrcode"></i> UPI
-            </button>
+            <label>
+                <input type="radio" name="paymentMethod" value="Credit Card"> Credit Card
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="Debit Card"> Debit Card
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="UPI" id="upiOption"> UPI
+            </label>
         </div>
 
-        <!-- Payment Forms -->
-        <div id="paymentFormContainer">
-            <!-- Credit/Debit Card Form -->
-            <form id="cardForm" style="display: none;">
-                <label for="cardNumber"><i class="fas fa-credit-card"></i> Card Number:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
-                
-                <label for="expiryDate"><i class="fas fa-calendar-alt"></i> Expiry Date:</label>
-                <input type="month" id="expiryDate" name="expiryDate" required>
-                
-                <label for="cvv"><i class="fas fa-lock"></i> CVV:</label>
-                <input type="password" id="cvv" name="cvv" maxlength="3" required>
-                
-                <label for="nameOnCard"><i class="fas fa-user"></i> Name on Card:</label>
-                <input type="text" id="nameOnCard" name="nameOnCard" required>
-                
-                <button type="submit" class="pay-btn"><i class="fas fa-paper-plane"></i> Pay Now</button>
-            </form>
+        <!-- QR Code for UPI -->
+        <div id="upiQR" style="display: none;">
+            <h3>Scan the QR Code to Pay:</h3>
+            <img src="logo/QR.jpeg" alt="UPI QR Code" style="max-width: 200px;">
+        </div>
 
-            <!-- UPI QR Code -->
-            <div id="upiQRCode" style="display: none; text-align: center;">
-                <p>Scan the QR code below to complete the payment:</p>
-                <img src="logo/QR.jpeg" alt="UPI QR Code" style="width: 200px; height: 200px;">
-            </div>
+        <!-- Done Button -->
+        <button id="doneButton" class="done-btn">
+            <i class="fas fa-check"></i> Done
+        </button>
+
+        <!-- Confirmation Message -->
+        <div id="confirmationMessage" class="confirmation-message" style="display: none;">
+            <h2 style="color: green;"><i class="fas fa-check-circle"></i> Payment completed. Collect your medicine.</h2>
         </div>
     </div>
 
     <script>
-        // Get references to buttons and forms
-        const creditCardBtn = document.getElementById('creditCardBtn');
-        const debitCardBtn = document.getElementById('debitCardBtn');
-        const upiBtn = document.getElementById('upiBtn');
-        const cardForm = document.getElementById('cardForm');
-        const upiQRCode = document.getElementById('upiQRCode');
+        const upiOption = document.getElementById('upiOption');
+        const upiQR = document.getElementById('upiQR');
+        const doneButton = document.getElementById('doneButton');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
 
-        // Event Listeners for Payment Options
-        creditCardBtn.addEventListener('click', () => {
-            cardForm.style.display = 'block';
-            upiQRCode.style.display = 'none';
+        // Show QR Code when UPI is selected
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                if (upiOption.checked) {
+                    upiQR.style.display = 'block';
+                } else {
+                    upiQR.style.display = 'none';
+                }
+            });
         });
 
-        debitCardBtn.addEventListener('click', () => {
-            cardForm.style.display = 'block';
-            upiQRCode.style.display = 'none';
-        });
-
-        upiBtn.addEventListener('click', () => {
-            cardForm.style.display = 'none';
-            upiQRCode.style.display = 'block';
+        // Display confirmation message when Done button is clicked
+        doneButton.addEventListener('click', () => {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (selectedMethod) {
+                confirmationMessage.style.display = 'block';
+                upiQR.style.display = 'none'; // Hide QR if visible
+                document.querySelector('.payment-options').style.display = 'none'; // Hide payment options
+                doneButton.style.display = 'none'; // Hide Done button
+            } else {
+                alert('Please select a payment method to proceed.');
+            }
         });
     </script>
-</body>
+    <script src="js/script.js"></script>
 
+</body>
 </html>
